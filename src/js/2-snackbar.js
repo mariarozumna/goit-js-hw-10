@@ -22,18 +22,20 @@ form.addEventListener('submit', function (event) {
     }, delay);
   });
 
-  promise.then(
-    (delay) => {
-      iziToast.success({
-        // title: 'Success',
-        message: `✅ Fulfilled promise in ${delay}ms`,
-      });
-    },
-    (delay) => {
-      iziToast.error({
-        // title: 'Error',
-        message: `❌ Rejected promise in ${delay}ms`,
-      });
-    }
-  );
+ promise.then(
+  (delay) => {
+    iziToast.success({
+      // title: 'Success',
+      message: `✅ Fulfilled promise in ${delay}ms`,
+    });
+    form.reset();
+  },
+  (delay) => {
+    iziToast.error({
+      // title: 'Error',
+      message: `❌ Rejected promise in ${delay}ms`,
+    });
+    form.reset();
+  }
+);
 });

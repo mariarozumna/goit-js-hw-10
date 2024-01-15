@@ -23,9 +23,9 @@ const options = {
 
     if (selectedDates[0] <= Date.now()) {
       iziToast.show({
-        message: 'Please choose a date in the future'
+        message: 'Please choose a date in the future',
+        color: 'red', // Add this line to set the color to red
       });
-      // window.alert('Please choose a date in the future');
       startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
@@ -56,13 +56,16 @@ function addLeadingZero(value) {
 }
 
 function onStartTimer() {
+  input.disabled = true;
+  startBtn.disabled = true;
+
   const intervalId = setInterval(() => {
     const timeDifference = userSelectedDate - Date.now();
 
     if (timeDifference <= 0) {
       clearInterval(intervalId);
       input.disabled = false;
-      startBtn.disabled = true;
+      startBtn.disabled = false;
       iziToast.show({
         theme: 'dark',
         message: 'Timer reached zero!',
