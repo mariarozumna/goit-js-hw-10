@@ -24,7 +24,7 @@ const options = {
     if (selectedDates[0] <= Date.now()) {
       iziToast.show({
         message: 'Please choose a date in the future',
-        color: 'red', // Add this line to set the color to red
+        color: 'red',
       });
       startBtn.disabled = true;
     } else {
